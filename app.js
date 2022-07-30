@@ -19,6 +19,9 @@ app.use(fileUpload());
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
+app.get('/', (req, res) => {
+  res.end('<h1>Heroes API works</h1>');
+});
 app.use('/api/heroes', heroesRouter);
 
 app.use((req, res) => {
