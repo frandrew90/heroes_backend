@@ -86,7 +86,7 @@ const deleteHeroController = async (req, res) => {
 const UpdateHeroController = async (req, res) => {
   const { heroId } = req.params;
   const body = req.body;
-  console.log(req.body);
+
   if (!body) {
     throw new WrongParametersError('Please enter a correct values');
   }

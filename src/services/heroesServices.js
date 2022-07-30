@@ -2,7 +2,9 @@ const heroSchema = require('../db/schemas/heroSchema.js');
 
 const heroesList = async (offset, limit) => {
   const heroes = await heroSchema.find({}, null, { skip: offset, limit });
-  return heroes;
+  const count = await heroSchema.count({});
+  const data = { count, heroes };
+  return data;
 };
 
 const heroFinderById = async heroId => {
