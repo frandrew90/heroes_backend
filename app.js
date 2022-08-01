@@ -12,6 +12,12 @@ const app = express();
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
+let count = 0;
+const myGreeting = () => {
+  count += 1;
+};
+const myTimeout = setInterval(myGreeting, 1000);
+
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
@@ -20,7 +26,7 @@ app.use(fileUpload());
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.end('<h1>Heroes API works!</h1>');
+  res.end(`<h1>Heroes API works! And Sasha Gamaliy earned ${count} USD</h1>`);
 });
 app.use('/api/heroes', heroesRouter);
 
